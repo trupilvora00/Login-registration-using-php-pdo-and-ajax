@@ -136,7 +136,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="form" method="POST" action="signup.php">
+                    <form class="form" method="POST" action="signup.php" enctype="multipart/form-data">
                         <div class="form-group">
                             <label >Full Name</label>
                             <input type="text" name="name" class="form-control">
@@ -154,6 +154,11 @@
                         <div class="form-group">
                             <label>Confirm Password</label>
                             <input type="password" name="cpassword" class="form-control" >
+                        </div>
+
+                        <div class="form-group">
+                            <label >Upload image</label>
+                            <input type="file" name="image" class="form-control" />
                         </div>
                         
                         <button type="submit" class="btn btn-primary">Sign me up!</button>

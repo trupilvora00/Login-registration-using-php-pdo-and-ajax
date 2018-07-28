@@ -2,8 +2,8 @@
 
 require_once "includes/init.php";
 
-// debug($_POST);
-$status = $user->signup($_POST,$db);
+// print_r($_FILES);
+$status = $user->signup($_POST,$_FILES,$db);
 
 if($status == "success"){
 

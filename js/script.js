@@ -5,21 +5,25 @@ $(function(){
         e.preventDefault();
 
         
-        $form = $(this).serialize();
+        // $form = $(this).serialize();
+        $form = new FormData(this);
+        console.log($form);
         
         $footer = $(this).parent(".modal-body").next(".modal-footer");
 
         
         $footer.html('<img src="images/loader1.gif">');
         
-        // console.log($form);
 
         // submitForm($form);
         $.ajax({
         
             url: $(this).attr('action'),
             type: $(this).attr('method'),
-            data:$(this).serialize(),
+            data: new FormData(this),
+            cache:false,
+            contentType:false,
+            processData:false,
             success: function(response){
         
                 response = $.parseJSON( response ); 
