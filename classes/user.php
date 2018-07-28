@@ -41,8 +41,7 @@ class User{
         // email existence
         // password and confirm password match
         // all fields are mendatory
-        // $all = explode('#',$user);
-        // debug($image);
+        
         if(empty($user['name']) OR empty($user['email']) OR empty($user['password']) OR empty($image['image'])){
             return "missing_fields";
         }
@@ -70,7 +69,6 @@ class User{
                 $statement -> bindParam(2,$user['email'],PDO::PARAM_STR);
                 $statement -> bindParam(3,$hash,PDO::PARAM_STR);
                 $statement -> bindParam(4,$code,PDO::PARAM_STR);
-                // $statement -> bindParam(5,$targetpath,PDO::PARAM_STR);
                 $statement->execute();
 
                 
@@ -78,6 +76,8 @@ class User{
                 $path = $_FILES['image']['tmp_name'];
                 $photo = $_FILES['image']['name'];
                 $targetpath = "upload/".$_FILES['image']['name'];
+
+                echo $ext = strtolower(pathinfo($photo,PATHINFO_EXTENSION));
                 if(move_uploaded_file($path,$targetpath)){
                     
                     $update = "update user set image=? where id=$lastid";
@@ -102,7 +102,6 @@ class User{
 
         if(is_object($statement)){
 
-            // $statement = bindParam(1, $email, PDO::PARAM_STR);
             $statement -> bindParam(1,$email,PDO::PARAM_STR);
             $statement->execute();
             
