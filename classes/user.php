@@ -132,7 +132,7 @@ class User{
                 if(is_object){
     
                     $a = $_SESSION['logged_in']['id'];
-                    $stmt->bindParam('id',$a,EPDO::PARAM_INT);
+                    $stmt->bindParam('id',$a,PDO::PARAM_INT);
                     $stmt->bindParam('image',$photo,PDO::PARAM_STR);
                     $stmt->bindParam('name',$user['name'],PDO::PARAM_STR);
                     $stmt -> execute();
