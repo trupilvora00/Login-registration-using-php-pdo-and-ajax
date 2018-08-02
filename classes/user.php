@@ -77,7 +77,7 @@ class User{
                 $photo = $_FILES['image']['name'];
                 $targetpath = "upload/".$_FILES['image']['name'];
 
-                echo $ext = strtolower(pathinfo($photo,PATHINFO_EXTENSION));
+                // echo $ext = strtolower(pathinfo($photo,PATHINFO_EXTENSION));
                 if(move_uploaded_file($path,$targetpath)){
                     
                     $update = "update user set image=? where id=$lastid";
@@ -111,6 +111,38 @@ class User{
             }
 
             return false;
+        }
+    }
+
+    public function edit($user,$image,$db){
+
+        if(empty($user['name']) OR empty($image['image'])){
+            return "missing_fields";
+        }
+        else{
+
+            $path = $_FILES['image']['tmp_name'];
+            $photo = $_FILES['image']['name'];
+            $targetpath = "upload/".$_FILES['image']['name'];
+
+            if(move_uploaded_file($path,$targetpath)){
+                
+                $update = "update user set name=:name,image=:image where id=:id";
+                $stmt = $db->prepare($update);
+                if(is_object){
+    
+                    $a = $_SESSION['logged_in']['id'];
+                    $stmt->bindParam('id',$a,EPDO::PARAM_INT);
+                    $stmt->bindParam('image',$photo,PDO::PARAM_STR);
+                    $stmt->bindParam('name',$user['name'],PDO::PARAM_STR);
+                    $stmt -> execute();
+                    
+
+                }
+                return "success";   
+                header("location:profile.php");
+            }
+
         }
     }
 }

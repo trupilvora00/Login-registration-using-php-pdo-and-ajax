@@ -51,20 +51,64 @@
             
             <form class="form-inline my-2 my-lg-0 ml-auto">
                 
+                <a href="edit.php" class="btn btn-danger mr-3 my-2 my-sm-0"  data-toggle="modal" data-target="#signup"> Edit profile</a>
                 
-                <a href="signout.php" class="btn btn-danger  my-2 my-sm-0" 
-                 >Sign out</a>
+                <a href="signout.php" class="btn btn-danger  my-2 my-sm-0"> Sign out</a>
                 
             </form>
         </div>
     </div>
 </nav>
 
+<div class="modal fade" id="signup" tabindex="-1" role="dialog"                         aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    Registration
+                </div>
+
+                <div class="modal-body">
+                    <form class="form" method="POST" action="edit.php" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label >Full Name</label>
+                            <input type="text" name="name" value="<?php echo $row['name'];?>" class="form-control">
+                            
+                        </div>
+                        <div class="form-group">
+                            <label >email</label>
+                            <input type="email" name="email" value="<?php echo $row['email']?>" class="form-control"  disabled>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label >Upload image</label>
+                            <input type="file" name="image" class="form-control"  />
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="jumbotron">
         <h1>User Profile</h1>
-        <h6>Name: <?php echo ucfirst($row['name'])?></h6>
+
+        <div class="p-4">
+        <img src="upload/<?php echo $row['image'];?>" alt="user image" height="100" width="100" style="border:3px solid black; border-radius:5px; box-shadow:2px 5px 10px gray;" class="mb-4" >
+
         
-        <h6>Email: <?php echo $row['email']?></h6>
+        <h6 class="bg-danger p-4 text-white rounded w-50" >Name: <?php echo ucfirst($row['name'])?></h6>
+        
+        <h6 class="bg-danger p-4 text-white rounded w-50">Email: <?php echo $row['email']?></h6>
+
+        </div>
+
     </div>
 
     
