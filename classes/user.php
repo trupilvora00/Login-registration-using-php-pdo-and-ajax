@@ -75,9 +75,10 @@ class User{
                 $lastid = $db->lastInsertId();
                 $path = $_FILES['image']['tmp_name'];
                 $photo = $_FILES['image']['name'];
-                $targetpath = "upload/".$_FILES['image']['name'];
-
                 // echo $ext = strtolower(pathinfo($photo,PATHINFO_EXTENSION));
+
+                $targetpath = "upload/".$_FILES['image']['name'];
+                
                 if(move_uploaded_file($path,$targetpath)){
                     
                     $update = "update user set image=? where id=$lastid";
@@ -116,22 +117,30 @@ class User{
 
     public function edit($user,$image,$db){
 
-        if(empty($user['name']) OR empty($image['image'])){
+        if( empty($user['name'])){
+            return "missing_fields";
+        }
+        else if( empty($_FILES['image']['name'])){
             return "missing_fields";
         }
         else{
 
             $path = $_FILES['image']['tmp_name'];
             $photo = $_FILES['image']['name'];
-            $targetpath = "upload/".$_FILES['image']['name'];
 
+            $targetpath = "upload/".$_FILES['image']['name'];
+            
+            
             if(move_uploaded_file($path,$targetpath)){
+                
+                $a = $_SESSION['logged_in']['id'];
+
                 
                 $update = "update user set name=:name,image=:image where id=:id";
                 $stmt = $db->prepare($update);
                 if(is_object){
     
-                    $a = $_SESSION['logged_in']['id'];
+                    
                     $stmt->bindParam('id',$a,PDO::PARAM_INT);
                     $stmt->bindParam('image',$photo,PDO::PARAM_STR);
                     $stmt->bindParam('name',$user['name'],PDO::PARAM_STR);
@@ -139,9 +148,11 @@ class User{
                     
 
                 }
-                return "success";   
-                header("location:profile.php");
+                
+            
+            return "success";   
             }
+
 
         }
     }

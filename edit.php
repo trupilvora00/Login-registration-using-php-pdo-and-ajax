@@ -11,6 +11,7 @@ if($status == "success"){
         
         'success'=>'success' , 
         'message'=>'<p class="alert alert-success">Your profile edited                   successfully!</p>',
+        'url' => 'profile.php',
         
     ]); 
 }

@@ -1,6 +1,6 @@
 <?php
     require_once 'includes/init.php';
-    
+        
     // session_start();
 
     if(!isset($_SESSION['logged_in'])){
@@ -28,6 +28,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <link rel="stylesheet"  href="style.css">
 
     <title>LOGIN/REGISTRATION</title>
 </head>
@@ -72,7 +73,7 @@
                     <form class="form" method="POST" action="edit.php" enctype="multipart/form-data">
                         <div class="form-group">
                             <label >Full Name</label>
-                            <input type="text" name="name" value="<?php echo $row['name'];?>" class="form-control">
+                            <input type="text" name="name" value="<?php echo $row['name'];?>" class="form-control" pattern="[A-Za-z]+">
                             
                         </div>
                         <div class="form-group">
@@ -122,7 +123,9 @@
 
     
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="js/script.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" ></script>
 </body>

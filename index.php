@@ -53,10 +53,10 @@
 </nav>
 
     <div class="jumbotron">
-        <h1>Hello Visitor!!</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium adipisci harum autem! Sint quod dignissimos aliquam recusandae ut explicabo, perferendis rerum reprehenderit provident </p>
+        <h1 class="display-1">Hello Visitor!!</h1>
+        <h3>This is <b>LOGIN-REGISTRATION</b>  system using <b>PHP PDO</b></h3>
 
-        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#signup">Join us today</a>
+        <a href="" class="btn btn-primary btn-lg mt-4 " data-toggle="modal" data-target="#signup">Join us today</a>
     </div>
 </div>
 
@@ -79,14 +79,11 @@
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" name="password" class="form-control"placeholder="Password">
                         </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" >
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
+                        
                         <button type="submit" class="btn btn-primary">login</button>
                     </form>
                     <br>
-                    <p><a href="#" data-toggle="modal" data-target="#send-password-link">Forgot your Password?</a></p>
+                    <!-- <p><a href="#" data-toggle="modal" data-target="#send-password-link">Forgot your Password?</a></p> -->
                 </div>
                 <div class="modal-footer" style="align-self: center;">
 
